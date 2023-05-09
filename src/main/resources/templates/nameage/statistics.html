@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Statistics</title>
+</head>
+<body>
+<h1>Session statistics</h1>
+<b>Oldest name: </b>
+<a th:text="${oldestName.getName()}">VALUE </a>
+<br>
+<b>Age: </b>
+<a th:text="${oldestName.getAge()}">VALUE </a>
+<br>
+<br>
+<b>List of names and number of requests:</b>
+<div th:each="names : ${listOfNames}" >
+    <a th:text="${names.getName()}">VALUE</a>
+    <a th:text="${names.getCount()}">VALUE</a>
+</div>
+<br>
+<a href="/main">
+    <button>Back to main</button>
+</a>
+</body>
+</html>

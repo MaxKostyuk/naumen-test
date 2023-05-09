@@ -5,14 +5,17 @@
     <title>Main</title>
 </head>
 <body>
-<h1>Welcome to main page </h1>
+<h1>Get your age by name!</h1>
 <form th:method="GET" th:action="@{/result}" th:object="${nameAge}">
     <label for = "name">Name: </label>
     <input type= "text" th:field="*{name}" id = "name"/>
     <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
     <br>
-
+    <br>
     <input type="submit" value="Get age">
 </form>
+<p href="/statistics">
+    <button>Session statistics</button>
+</p>
 </body>
 </html>

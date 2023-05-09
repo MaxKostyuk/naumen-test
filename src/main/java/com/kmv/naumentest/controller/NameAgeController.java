@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,14 +22,6 @@ public class NameAgeController {
         return "nameage/main";
     }
 
-//    @GetMapping("/result")
-//    public String resultPage(@RequestParam String name,
-//                             Model model) {
-//        model.addAttribute("name", name);
-//        model.addAttribute("age", service.getNameAge(name));
-//        return "nameage/result";
-//    }
-
     @GetMapping("/result")
     public String resultPage(@ModelAttribute @Valid NameAge nameAge,
                              BindingResult result) {
@@ -38,5 +29,12 @@ public class NameAgeController {
             return "nameage/main";
         nameAge.setAge(service.getNameAge(nameAge.getName()));
         return "nameage/result";
+    }
+
+    @GetMapping("/statistics")
+    public String statisticsPage(Model model) {
+        model.addAttribute("oldestName", service.getOldestName());
+        model.addAttribute("listOfNames", service.getNameRequestFrequency());
+        return "nameage/statistics";
     }
 }
