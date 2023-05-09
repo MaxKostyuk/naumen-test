@@ -5,11 +5,14 @@
     <title>Result</title>
 </head>
 <body>
-<h1>Wellcome to RESULT page </h1>
+<h1>Welcome to result page </h1>
 
-<p th:text="${name}"/>
-<p th:text="${age}"/>
-
-<a href="/main">Try one more time</a>
+<b>The name: </b>
+<p th:text="${nameAge.getName()}">VALUE</p>
+<b>The age: </b>
+<p th:text="${nameAge.getAge()}"/>
+<a href="/main">
+    <button>Try again</button>
+</a>
 </body>
 </html>

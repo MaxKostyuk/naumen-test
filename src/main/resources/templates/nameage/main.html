@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
 </head>
 <body>
-<h1>Wellcome to main page </h1>
+<h1>Welcome to main page </h1>
+<form th:method="GET" th:action="@{/result}" th:object="${nameAge}">
+    <label for = "name">Name: </label>
+    <input type= "text" th:field="*{name}" id = "name"/>
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br>
+
+    <input type="submit" value="Get age">
+</form>
 </body>
 </html>
